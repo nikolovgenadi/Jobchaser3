@@ -13,11 +13,16 @@
     "moduleResolution": "Node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "noEmit": false, // Changed from true to false
+    "noEmit": false,
     "jsx": "react-jsx",
     "outDir": "dist",
-    "rootDir": "src"
+    "rootDir": "src",
+    "baseUrl": ".",
+    "paths": {
+      "@router": ["./node_modules/react-router-dom"]
+    },
+    "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.d.ts"],
+    "exclude": ["node_modules"]
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.d.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
