@@ -19,8 +19,12 @@ export default defineConfig({
     },
   },
   build: {
+    // outDir: "/dist",
     rollupOptions: {
       external: ["/node_modules/react/jsx-runtime"],
+      input: {
+        main: "index.html",
+      },
     },
   },
 });
