@@ -1,5 +1,7 @@
 /* eslint-disable react-refresh/only-export-components */
-import React, { useState } from "react";
+// @ts-ignore
+import React from "react";
+import { useState } from "react";
 import List from "./components/list";
 import NavbarComponent from "./components/navbar";
 import { AuthProvider } from "./context/AuthContext";
