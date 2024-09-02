@@ -1,6 +1,6 @@
 import useFetchData from "./useFetchData";
 import { Job } from "../interfaces";
-import "/bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 interface ListItemProps {
   item: Job;

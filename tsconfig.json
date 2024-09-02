@@ -1,11 +1,13 @@
 {
   "compilerOptions": {
+    "noImplicitAny": false,
+    "types": ["node", "react", "react-dom",],
     "target": "ESNext",
     "useDefineForClassFields": true,
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "allowJs": false,
     "skipLibCheck": true,
-    "esModuleInterop": false,
+    "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
@@ -13,11 +15,12 @@
     "moduleResolution": "Node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "noEmit": false, // Changed from true to false
-    "jsx": "react-jsx",
+    "noEmit": false, 
+    "jsx": "preserve",
+    "jsxImportSource": "react",
     "outDir": "dist",
     "rootDir": "src"
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.d.ts"],
+  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.d.ts", "src/firebase.d.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

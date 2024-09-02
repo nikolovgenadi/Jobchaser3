@@ -1,6 +1,6 @@
 import useFetchData from "./useFetchData";
 import ListItem from "./ListItem";
-import "/bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 interface ListProps {
   searchQuery: string;
