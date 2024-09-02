@@ -3,8 +3,7 @@ import { useNavigate } from "react-router-dom";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-  updateProfile,
-} from "../firebase";
+} from "../firebase/firebase";
 
 interface AuthFormProps {
   onSignUp?: boolean;
@@ -13,28 +12,24 @@ interface AuthFormProps {
 const AuthForm: React.FC<AuthFormProps> = ({ onSignUp = false }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [name, setName] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
-    if (onSignUp) {
-      try {
-        const userCredential = await createUserWithEmailAndPassword(
-          email,
-          password
-        );
-        await updateProfile(userCredential.user!, { displayName: name });
+    try {
+      if (onSignUp) {
+        await createUserWithEmailAndPassword(email, password);
         navigate("/dashboard");
-      } catch (error) {
-        console.error("Error creating user:", error);
-      }
-    } else {
-      try {
+      } else {
         await signInWithEmailAndPassword(email, password);
         navigate("/dashboard");
-      } catch (error) {
-        console.error("Error signing in:", error);
+      }
+    } catch (error: unknown) {
+      console.error("Error:", error);
+      if (typeof error === "object" && error !== null) {
+        alert((error as Error).message || "An unexpected error occurred.");
+      } else {
+        alert("An unexpected error occurred.");
       }
     }
   };
@@ -55,21 +50,9 @@ const AuthForm: React.FC<AuthFormProps> = ({ onSignUp = false }) => {
         onChange={(e) => setPassword(e.target.value)}
         required
       />
-      {onSignUp && (
-        <>
-          <input
-            type="text"
-            placeholder="Name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            required
-          />
-        </>
-      )}
       <button type="submit">{onSignUp ? "Sign Up" : "Log In"}</button>
     </form>
   );
 };
 
 export default AuthForm;
-// npx tsc --watch

@@ -1,13 +1,11 @@
 import React from "react";
-import { useProtectedRoute } from "../hooks/useProtectedRoute";
+import ProtectedRoute from "./ProtectedRoute";
 
 const Dashboard: React.FC = () => {
-  useProtectedRoute();
-
   return (
     <div className="dashboard">
       <h1>Dashboard</h1>
-      {}
+      {/* Add dashboard content here */}
     </div>
   );
 };

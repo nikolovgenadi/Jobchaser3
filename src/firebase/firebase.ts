@@ -1,11 +1,25 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { User } from "firebase/auth";
-// import { auth } from "./firebaseConfig";
+import { UserCredential } from "firebase/auth";
 
 declare global {
   interface Window {
     firebase: typeof import("firebase/app");
+  }
+}
+
+declare module "firebase/auth" {
+  interface Auth {
+    createUserWithEmailAndPassword(
+      email: string,
+      password: string
+    ): Promise<UserCredential>;
+    signInWithEmailAndPassword(
+      email: string,
+      password: string
+    ): Promise<UserCredential>;
+    updateProfile(user: User | null, profile: Partial<User>): Promise<void>;
   }
 }
 
@@ -22,7 +36,6 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 
-// Define these functions here instead of binding them
 export const createUserWithEmailAndPassword = async (
   email: string,
   password: string

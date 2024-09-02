@@ -1,5 +1,5 @@
-import React from "react";
-import { Navbar, Container, Nav, Form, FormControl } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 interface NavbarProps {
   searchQuery: string;
@@ -7,34 +7,64 @@ interface NavbarProps {
 }
 
 function NavbarComponent({ searchQuery, setSearchQuery }: NavbarProps) {
-  const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchQuery(event.target.value);
+  const navigate = useNavigate();
+
+  const handleLogin = () => {
+    navigate("/login");
+  };
+
+  const handleSignup = () => {
+    navigate("/signup");
   };
 
   return (
-    <Navbar bg="light" expand="lg">
-      <Container>
-        <Navbar.Brand href="#home">Navbar</Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto">
-            <Nav.Link href="#home">Jobs</Nav.Link>
-            <Nav.Link href="#home">Signup</Nav.Link>
-            <Nav.Link href="#home">Sign-in</Nav.Link>
-          </Nav>
-          <Form className="d-flex">
-            <FormControl
-              type="search"
+    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+      <div className="container-fluid">
+        <Link className="navbar-brand" to="/">
+          Job Chaser
+        </Link>
+        <button
+          className="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span className="navbar-toggler-icon"></span>
+        </button>
+        <div className="collapse navbar-collapse" id="navbarNav">
+          <ul className="navbar-nav">
+            <li className="nav-item">
+              <Link className="nav-link" to="/dashboard">
+                Dashboard
+              </Link>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link" onClick={handleLogin}>
+                Sign In
+              </a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link" onClick={handleSignup}>
+                Sign Up
+              </a>
+            </li>
+          </ul>
+          <form className="d-flex">
+            <input
+              className="form-control me-2"
+              type="text"
               value={searchQuery}
-              onChange={handleSearchChange}
+              onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search"
-              className="me-2"
               aria-label="Search"
             />
-          </Form>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
+          </form>
+        </div>
+      </div>
+    </nav>
   );
 }
 

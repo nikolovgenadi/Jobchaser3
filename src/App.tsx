@@ -1,38 +1,37 @@
-/* eslint-disable react-refresh/only-export-components */
 import React from "react";
-import { useState } from "react";
-import List from "./components/list";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import NavbarComponent from "./components/navbar";
+import List from "./components/list";
+import Dashboard from "./components/dashboard";
+import Login from "./components/AuthForm";
+import Signup from "./components/AuthForm";
 import { AuthProvider } from "./context/AuthContext";
-import { initializeApp } from "firebase/app";
-import { getAuth } from "firebase/auth";
-
-const firebaseConfig = {
-  apiKey: "AIzaSyBoIsMhxktT-huJCa3C6Hyh1xkJ3_VPJCU",
-  authDomain: "jobchaser-79072.firebaseapp.com",
-  projectId: "jobchaser-79072",
-  storageBucket: "jobchaser-79072.appspot.com",
-  messagingSenderId: "917761348451",
-  appId: "1:917761348451:web:1fd48a02f2c78510453956",
-  measurementId: "G-L9EB9VCHEE",
-};
-
-const app = initializeApp(firebaseConfig);
-export const auth = getAuth(app);
+import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
-  const [searchQuery, setSearchQuery] = useState("");
+  const [searchQuery, setSearchQuery] = React.useState("");
 
   return (
     <AuthProvider>
-      <div className="App">
-        <h1>Job Chaser</h1>
+      <Router>
         <NavbarComponent
           searchQuery={searchQuery}
           setSearchQuery={setSearchQuery}
         />
-        <List searchQuery={searchQuery} />
-      </div>
+        <Routes>
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/login" element={<Login />} />
+          <Route
+            path="/dashboard"
+            element={
+              <ProtectedRoute>
+                <Dashboard />
+              </ProtectedRoute>
+            }
+          />
+          <Route path="/" element={<List searchQuery={searchQuery} />} />
+        </Routes>
+      </Router>
     </AuthProvider>
   );
 }
