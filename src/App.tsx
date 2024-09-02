@@ -1,5 +1,4 @@
 /* eslint-disable react-refresh/only-export-components */
-// @ts-ignore
 import React from "react";
 import { useState } from "react";
 import List from "./components/list";

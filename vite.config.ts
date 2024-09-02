@@ -5,6 +5,9 @@ export default defineConfig({
   plugins: [
     react({
       jsxRuntime: "classic",
+      babel: {
+        plugins: ["@babel/plugin-transform-react-jsx"],
+      },
     }),
   ],
   base: "/",

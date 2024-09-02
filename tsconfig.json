@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "noUnusedLocals": false,
     "noImplicitAny": false,
     "types": ["node", "react", "react-dom",],
     "target": "ESNext",
@@ -16,7 +17,7 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": false, 
-    "jsx": "preserve",
+    "jsx": "react-jsx",
     "jsxImportSource": "react",
     "outDir": "dist",
     "rootDir": "src"

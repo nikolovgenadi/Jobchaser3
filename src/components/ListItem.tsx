@@ -1,3 +1,4 @@
+import React from "react";
 import useFetchData from "./useFetchData";
 import { Job } from "../interfaces";
 import "bootstrap/dist/css/bootstrap.min.css";
