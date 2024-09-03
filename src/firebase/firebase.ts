@@ -62,3 +62,5 @@ export const updateProfile = async (
     console.error("Error updating profile:", error);
   }
 };
+
+export * from "firebase/auth";

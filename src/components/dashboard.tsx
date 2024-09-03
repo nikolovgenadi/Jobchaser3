@@ -1,5 +1,4 @@
 import React from "react";
-import ProtectedRoute from "./ProtectedRoute";
 
 const Dashboard: React.FC = () => {
   return (

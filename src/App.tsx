@@ -7,6 +7,16 @@ import Login from "./components/AuthForm";
 import Signup from "./components/AuthForm";
 import { AuthProvider } from "./context/AuthContext";
 import ProtectedRoute from "./components/ProtectedRoute";
+// import {app} from "./firebaseInit";
+// import {auth} from "./firebaseInit";
+
+async function initFirebase() {
+  (window as { firebase: typeof import("firebase/app") }).firebase =
+    await import("firebase/app");
+  await import("firebase/firestore");
+}
+
+initFirebase();
 
 function App() {
   const [searchQuery, setSearchQuery] = React.useState("");

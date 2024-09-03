@@ -19,11 +19,17 @@ export default defineConfig({
     },
   },
   build: {
+    sourcemap: true,
     rollupOptions: {
       external: ["/node_modules/react/jsx-runtime"],
       input: {
         main: "index.html",
       },
+    },
+  },
+  css: {
+    modules: {
+      localsConvention: "camelCaseOnly",
     },
   },
 });
