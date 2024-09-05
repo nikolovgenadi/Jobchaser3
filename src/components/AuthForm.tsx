@@ -39,13 +39,16 @@ function AuthForm({ onSignUp }: AuthFormProps) {
     try {
       if (onSignUp) {
         await createUserWithEmailAndPassword(auth, email, password);
+        console.log("created acc");
         await updateProfile(auth.currentUser!, {
           displayName: displayName.trim(),
         });
         navigate("/dashboard");
+        console.log("created acc trim-dashboard");
       } else {
         await signInWithEmailAndPassword(auth, email, password);
         navigate("/dashboard");
+        console.log("ELSE acc trim-dashboard");
       }
     } catch (error) {
       if (error instanceof Error) {
