@@ -12,16 +12,10 @@ export default defineConfig({
       },
     }),
   ],
-  base: "/",
-  resolve: {
-    alias: {
-      "@": "/src",
-    },
-  },
   build: {
     sourcemap: true,
     rollupOptions: {
-      external: ["/node_modules/react/jsx-runtime"],
+      external: ["firebase"],
       input: {
         main: "index.html",
       },

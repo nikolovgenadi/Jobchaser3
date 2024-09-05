@@ -5,8 +5,9 @@ import List from "./components/list";
 import Dashboard from "./components/dashboard";
 import Login from "./components/AuthForm";
 import Signup from "./components/AuthForm";
-import { AuthProvider } from "./context/AuthContext";
+import { AuthProvider } from "./context/auth";
 import ProtectedRoute from "./components/ProtectedRoute";
+// import { getFirestore } from 'firebase/firestore';
 // import {app} from "./firebaseInit";
 // import {auth} from "./firebaseInit";
 

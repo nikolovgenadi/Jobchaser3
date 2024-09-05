@@ -1,12 +1,11 @@
-import React from "react";
 import useFetchData from "./useFetchData";
 import { Job } from "../interfaces";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-interface ListItemProps {
-  item: Job;
-  searchQuery: string;
-}
+// interface ListItemProps {
+//   item: Job;
+//   searchQuery: string;
+// }
 
 function ListItem({
   item,
@@ -15,7 +14,7 @@ function ListItem({
   item: Job;
   searchQuery: string;
 }): JSX.Element {
-  const { jobs, isLoading /* unused */, error /* unused */ } = useFetchData();
+  const { jobs /* isLoading , error */ } = useFetchData();
 
   const filteredJobs = jobs.filter((i) =>
     i.position.toLowerCase().includes(searchQuery.toLowerCase())
