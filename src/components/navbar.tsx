@@ -1,20 +1,11 @@
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
-interface NavbarProps {
-  searchQuery: string;
-  setSearchQuery: (value: string) => void;
-}
-
-function NavbarComponent({ searchQuery, setSearchQuery }: NavbarProps) {
+function NavbarComponent({ searchQuery, setSearchQuery }) {
   const navigate = useNavigate();
 
-  const handleLogin = () => {
-    navigate("/login");
-  };
-
-  const handleSignup = () => {
-    navigate("/signup");
+  const handleAuth = (isSignup: boolean) => {
+    navigate(`${isSignup ? "/signup" : "/login"}`);
   };
 
   return (
@@ -42,12 +33,12 @@ function NavbarComponent({ searchQuery, setSearchQuery }: NavbarProps) {
               </Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" onClick={handleLogin}>
+              <a className="nav-link" onClick={() => handleAuth(false)}>
                 Sign In
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" onClick={handleSignup}>
+              <a className="nav-link" onClick={() => handleAuth(true)}>
                 Sign Up
               </a>
             </li>

@@ -1,3 +1,4 @@
+// authform.tsx
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
@@ -5,16 +6,16 @@ import {
   createUserWithEmailAndPassword,
   updateProfile,
 } from "firebase/auth";
-import { auth } from "../firebaseSetup";
+import { auth } from "../firebase/firebase-config";
 
 interface AuthFormProps {
-  onSignUp?: boolean;
+  onAuth: boolean;
 }
 
-function AuthForm({ onSignUp }: AuthFormProps) {
+function AuthForm({ onAuth }: AuthFormProps) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [displayName, setDisplayName] = useState(""); // Added for sign up
+  const [displayName, setDisplayName] = useState("");
   const [error, setError] = useState<string | null>(null);
   const navigate = useNavigate();
 
@@ -22,9 +23,7 @@ function AuthForm({ onSignUp }: AuthFormProps) {
     const errors: string[] = [];
     if (!email) errors.push("Email is required");
     if (!password) errors.push("Password is required");
-    if (password.length < 6)
-      errors.push("Password must be at least 6 characters long");
-    if (onSignUp && !displayName)
+    if (onAuth && !displayName)
       errors.push("Display Name is required for sign up");
     return errors;
   };
@@ -37,18 +36,17 @@ function AuthForm({ onSignUp }: AuthFormProps) {
       return;
     }
     try {
-      if (onSignUp) {
+      if (onAuth) {
+        // Signup logic
         await createUserWithEmailAndPassword(auth, email, password);
-        console.log("created acc");
         await updateProfile(auth.currentUser!, {
           displayName: displayName.trim(),
         });
         navigate("/dashboard");
-        console.log("created acc trim-dashboard");
       } else {
+        // Login logic
         await signInWithEmailAndPassword(auth, email, password);
         navigate("/dashboard");
-        console.log("ELSE acc trim-dashboard");
       }
     } catch (error) {
       if (error instanceof Error) {
@@ -79,16 +77,8 @@ function AuthForm({ onSignUp }: AuthFormProps) {
         onChange={(e) => setPassword(e.target.value)}
         required
       />
-      {onSignUp && (
+      {onAuth && (
         <>
-          <input
-            id="display-name"
-            name="displayName"
-            type="text"
-            placeholder="Display Name"
-            onChange={(e) => setDisplayName(e.target.value)}
-            required
-          />
           <input
             id="confirm-password"
             name="confirmPassword"
@@ -97,10 +87,18 @@ function AuthForm({ onSignUp }: AuthFormProps) {
             onChange={(e) => setPassword(e.target.value)}
             required
           />
+          <input
+            id="display-name"
+            name="displayName"
+            type="text"
+            placeholder="Display Name"
+            onChange={(e) => setDisplayName(e.target.value)}
+            required
+          />
         </>
       )}
       {error && <p className="error">{error}</p>}
-      <button type="submit">{onSignUp ? "Sign Up" : "Log In"}</button>
+      <button type="submit">{onAuth ? "Sign Up" : "Log In"}</button>
     </form>
   );
 }

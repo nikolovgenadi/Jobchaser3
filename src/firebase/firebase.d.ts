@@ -12,5 +12,3 @@ declare module "firebase/firestore" {
   const firestore: typeof import("firebase/firestore");
   export default firestore;
 }
-
-// Add other modules as needed

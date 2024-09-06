@@ -15,7 +15,7 @@ export default defineConfig({
   build: {
     sourcemap: true,
     rollupOptions: {
-      external: ["firebase"],
+      external: ["firebase", "react-router-dom", "/dist/main.js"],
       input: {
         main: "index.html",
       },
@@ -24,6 +24,11 @@ export default defineConfig({
   css: {
     modules: {
       localsConvention: "camelCaseOnly",
+    },
+  },
+  resolve: {
+    alias: {
+      "@": "./src",
     },
   },
 });
