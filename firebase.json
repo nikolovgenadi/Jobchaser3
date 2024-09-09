@@ -4,13 +4,31 @@
     "ignore": [
       "firebase.json",
       "**/.*",
-      "**/node_modules/**"
+      "**/node_modules/**",
+      "**/.git/**",
+      "**/.DS_Store"
     ],
     "rewrites": [
       {
-        "source": "**",
+        "source": "./",
         "destination": "/index.html"
       }
     ]
-  }
+  },
+
+  "headers": [
+      {
+        "source": "/__/firebase/**",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "public,max-age=0"
+          },
+          {
+            "key": "Content-Security-Policy",
+            "value": "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'"
+          }
+        ]
+      }
+    ]
 }

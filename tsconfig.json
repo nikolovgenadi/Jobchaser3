@@ -1,35 +1,54 @@
 {
   "compilerOptions": {
-    "noImplicitReturns": true,
-    "noImplicitThis": true,
+    "typeRoots": [
+      "./node_modules/@types",
+      "./node_modules/@types/firebase",
+      "./node_modules/@types/react",
+      "./node_modules/@types/react-dom",
+      "./node_modules/@types/vite",
+      "./node_modules",
+      "./node_modules/typescript"
+    ],
+    "target": "esnext",
+    "useDefineForClassFields": true,
+    "lib": ["esnext", "dom"],
+    "skipLibCheck": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noImplicitAny": false,
-    "types": ["node", "react", "react-dom", "firebase"],
-    "target": "ESNext",
-    "useDefineForClassFields": true,
-    "lib": ["DOM", "DOM.Iterable", "ESNext"],
-    "allowJs": false,
-    "skipLibCheck": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedIndexedAccess": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noImplicitAny": true,
+    "noImplicitOverride": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "moduleResolution": "node",
+    "types": ["node", "react", "react-dom", "vite", "rollup-plugin-visualizer", "react/jsx-runtime"],
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "module": "ESNext",
-    "moduleResolution": "Node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "noEmit": false, 
+    "noEmit": false,
+    "sourceMap": true,
     "jsx": "react-jsx",
     "jsxImportSource": "react",
     "outDir": "dist",
-    "rootDir": "src"
+    "rootDir": "src",
+    "baseUrl": ".",
+    "paths": {
+      "@router": ["./node_modules/react-router-dom"]
+    }
   },
-"include": [
+  "include": [
     "src/**/*",
     "src/**/*.d.ts",
-    "src/firebase/firebase.d.ts"
+    "src/firebase/firebase.d.ts",
+    "eslint.d.ts"
   ],
-    // "references": [{ "path": "./tsconfig.node.json" }],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "**/*.spec.ts"],
+
+  "files": ["src/main.tsx"]
 }

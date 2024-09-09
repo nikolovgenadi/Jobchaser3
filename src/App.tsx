@@ -7,7 +7,6 @@ import Login from "./components/AuthForm";
 import Signup from "./components/AuthForm";
 import { AuthProvider } from "./firebase/auth";
 import ProtectedRoute from "./components/ProtectedRoute";
-import AuthForm from "./components/AuthForm";
 
 function App() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -19,7 +18,6 @@ function App() {
           searchQuery={searchQuery}
           setSearchQuery={setSearchQuery}
         />
-        <AuthForm onAuth={location.pathname.includes("/signup")} />
         <Routes>
           <Route path="/signup" element={<Signup onAuth={true} />} />
           <Route path="/login" element={<Login onAuth={false} />} />

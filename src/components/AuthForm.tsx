@@ -1,4 +1,3 @@
-// authform.tsx
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
@@ -37,14 +36,12 @@ function AuthForm({ onAuth }: AuthFormProps) {
     }
     try {
       if (onAuth) {
-        // Signup logic
         await createUserWithEmailAndPassword(auth, email, password);
         await updateProfile(auth.currentUser!, {
           displayName: displayName.trim(),
         });
         navigate("/dashboard");
       } else {
-        // Login logic
         await signInWithEmailAndPassword(auth, email, password);
         navigate("/dashboard");
       }

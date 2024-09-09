@@ -1,7 +1,12 @@
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
-function NavbarComponent({ searchQuery, setSearchQuery }) {
+interface NavbarComponentProps {
+  searchQuery: string;
+  setSearchQuery: (query: string) => void;
+}
+
+function NavbarComponent({ searchQuery, setSearchQuery }: NavbarComponentProps) {
   const navigate = useNavigate();
 
   const handleAuth = (isSignup: boolean) => {
