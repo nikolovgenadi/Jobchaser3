@@ -4,7 +4,7 @@ import { visualizer } from "rollup-plugin-visualizer";
 import path from "path";
 
 export default defineConfig({
-  base: './',
+  base: '/',
   cacheDir: ".vite_cache",
   plugins: [
     visualizer(),
@@ -23,7 +23,7 @@ export default defineConfig({
   },
   build: {
     sourcemap: true,
-    outDir: '../dist',
+    outDir: '/dist',
     emptyOutDir: true,
     rollupOptions: {
       input: {
@@ -52,7 +52,7 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      "@": "./src",
+      "@": "/src",
       "@babel/runtime": path.resolve(__dirname, "node_modules/@babel/runtime"),
     },
   },
