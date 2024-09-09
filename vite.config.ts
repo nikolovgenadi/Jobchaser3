@@ -23,11 +23,11 @@ export default defineConfig({
   },
   build: {
     sourcemap: true,
-    outDir: '/dist',
+    outDir: 'dist',
     emptyOutDir: true,
     rollupOptions: {
       input: {
-        main: "/src/main.tsx",
+        main: "src/main.tsx",
       },
       output: {
         globals: {
