@@ -4,7 +4,7 @@ import { visualizer } from "rollup-plugin-visualizer";
 import path from "path";
 
 export default defineConfig({
-  base: '/',
+  base: './',
   cacheDir: ".vite_cache",
   plugins: [
     visualizer(),
