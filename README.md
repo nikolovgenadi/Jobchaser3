@@ -1,50 +1,16 @@
-# React + TypeScript + Vite
+Vad menas med Reacts ekosystem? 
+Man menar React och dess alla verktyg som används för att bygga appar, inte bara biblioteket men också saker som hanterar states, formulär, ui komponenter, testing, routing mm. 
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Nämn några andra viktiga bibliotek i Reacts ekosystem förutom React Router och React Hook Form
+RTK react toolkit för global state management, axios/fetch för api anrop och react query för hantering av datahäntning och caching. 
 
-Currently, two official plugins are available:
+Vad är fördelen med att använda React Hook Form?
+genom RHF förenklar man koden, den är snabb pga den inte renderar hela formuläret vid varje input som görs, har inbyggda validering och man kan även använda YUP som valideringsbibliotek. Den stöds också av ts.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Vad är syftet med useContext? Vilket problem med props löser den?
+Man undviker props drilling där man i flera komponenter behöver data eller funktion som man inte vill manuellt hantera data genom alla nivåer. Den måste gå igenom som props från parent till child genom flera nivåer av kod som man kan undvika med useContext. Man lägger datan längst upp i koden och frågar med varje komponent om datan direkt utan att gå igenom alla komponenter emellan som gör koden renare, tydligare och mycket mindre. 
 
-## Expanding the ESLint configuration
+Vilka fördelar finns det att använda Tailwind / nackdelar? 
+Det var lite konstigt och obekant i början när man blivit van vid css, behövde mycket hjälp från nätet och de långa raderna. 
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
-
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+Med mer kompetens blir det snabbt då man slipepr skriva css och hantera massa filer och mycket mer agilt där man kan ändra snabbt och enkelt. 
